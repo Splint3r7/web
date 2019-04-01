@@ -19,7 +19,7 @@ locale                   : "en-US"
 title                    : "Hassan Khan Yusufzai"
 title_separator          : "-"
 name                     : "Hassan Khan Yusufzai"
-description              : "Just another script kiddie!"
+description              : "Security Researcher"
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -106,10 +106,10 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "Hassan Khan Yusufzai"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an amazing person."
-  location         : "Somewhere"
+  bio              : "Just another script kiddie!"
+  location         : "Lahore, Pakistan"
   email            :
   links:
     - label: "Email"
