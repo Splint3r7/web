@@ -1,6 +1,6 @@
 ---
 title: "Writeups"
-permalink: /writeups/
+permalink: /working0x0/
 layout: archive
 author_profile: true
 ---
