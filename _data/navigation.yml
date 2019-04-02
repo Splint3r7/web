@@ -6,3 +6,5 @@ main:
     url: /whoami/
   - title: "Contact"
     url: /contact/
+  - title: "Recent"
+    url: /recent/
