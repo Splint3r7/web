@@ -1,5 +1,5 @@
 ---
-title: "WHOAMI"
+title: "Whoami"
 permalink: /whoami/
 layout: archive
 author_profile: true
