@@ -1,7 +1,7 @@
 # main links
 main:
   - title: "Writeups"
-    url: /home/
+    url: /working0x0/ #later change this to home URL
   - title: "Whoami"
     url: /whoami/
   - title: "Contact"
