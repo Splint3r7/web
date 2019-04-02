@@ -1,7 +1,7 @@
 # main links
 main:
-  - title: "Home"
-    url: http://hassankhanyusufzai.com
+  - title: "About"
+    url: /About/
   - title: "Whoami"
     url: http://hassankhanyusufzai.com/home/Whoami
   - title: "Writeups"
