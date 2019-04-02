@@ -1,10 +1,8 @@
 # main links
 main:
-  - title: "About"
-    url: /About/
-  - title: "Whoami"
-    url: http://hassankhanyusufzai.com/home/Whoami
   - title: "Writeups"
-    url: /year-archive/
+    url: /home/
+  - title: "Whoami"
+    url: /whoami/
   - title: "Contact"
-    url: /collection-archive/
+    url: /contact/
