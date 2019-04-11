@@ -1,3 +1,3 @@
 ## Whomai?
 
-Just an other script kiddies!
+Just another script kiddie!
