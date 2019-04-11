@@ -3,6 +3,8 @@ title: "OverTheWire’s Bandit 1-17 solutions"
 date: 2019-04-11
 tags: [overthewire, ctf, writeup, solutions,bandit]
 excerpt: "OverTheWire’s Bandit 1-17 solutions"
+header:
+  image: assets/images/Bandit-header.png
 
 ---
 
