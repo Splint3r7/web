@@ -16,7 +16,7 @@ header:
 
 NMAP TCP port scanning:
 
-```
+```console
 $ nmap -sV -sC -Pn -T5 10.10.10.105 -o carrier.nmap
 
 
