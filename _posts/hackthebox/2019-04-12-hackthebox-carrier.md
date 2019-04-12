@@ -357,7 +357,6 @@ r1# exit
 
 access-list:
 
-> | click me | click me |
 > | Step 1 | enable Example: Device> enable |
 > | Step 2 | configure terminal Example: Device# configure terminal |
 > | Step 3 | access-list access-list-number permit {source [source-wildcard] | any} [log] Example: Device(config)# access-> list 1 permit 172.16.5.22 0.0.0.0 |
@@ -378,7 +377,7 @@ Explanation: Creates the route map entry. Enters route-map configuration mode
 Example: Example:hostname(config)#route-map name {permit} [12]
 Explanation: Route map entries are read in order. You can identify the order using the sequence_number argument, or the ASA uses the order in which you add route map entries
 
-> Hi, I did this networking bgp stuff first time :( So please expect so mistakes! But at the end it took me whole week to under and exploit that bgp hijacking thing!
+> Hi, I did this networking bgp stuff first time :( So please expect some mistakes! also it took me whole week to understand and exploit that bgp hijacking thing!
 
 Now, All I have to do is to capture the packets.
 
