@@ -18,7 +18,7 @@ header:
 
 ### Solution:
 
-```
+```console
 $ ssh bandit0@bandit.labs.overthewire.org -p 2220
 password:bandit0
 ```
@@ -33,7 +33,7 @@ password:bandit0
 
 ### Solution:
 
-```
+```console
 $ cat readme
 boJ9jbbUNNfktd78OOpsqOltutMc3MY1
 ```
@@ -48,7 +48,7 @@ boJ9jbbUNNfktd78OOpsqOltutMc3MY1
 
 ### Solution:
 
-```
+```console
 cat < -
 cat ./-
 ```
@@ -66,7 +66,7 @@ cat ./-
 
 ### Solution:
 
-```
+```console
 bandit2@bandit:~$ cat "spaces in this filename"
 UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
 ```
@@ -81,7 +81,7 @@ UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
 
 ### Solution:
 
-```
+```console
 bandit3@bandit:~/inhere$ ls -la
 total 12
 drwxr-xr-x 2 root    root    4096 Oct 16 14:00 .
@@ -101,7 +101,7 @@ pIwrPrtPN36QITSp3EQaw936yaFoFgAB
 
 ### Solution:
 
-```
+```console
 bandit4@melissa:~/inhere$ file ./-*
 ./-file00: data
 ./-file01: data
@@ -127,7 +127,7 @@ koReBOKuIDDepwhWk7jZC0RTdopnAYKh
 
 ### Solution:
 
-```
+```console
 bandit5@bandit:~/inhere$ find ./* -size 1033c
 ./maybehere07/.file2
 bandit5@bandit:~/inhere$ cat < ./maybehere07/.file2
@@ -146,7 +146,7 @@ DXjZPULLxYr17uwoI01bNLQbtFemEgo7
 
 ### Solution:
 
-```
+```console
 bandit6@bandit:~$ find / -user bandit7 -group bandit6 -size 33c 2>/dev/null
 /var/lib/dpkg/info/bandit7.password
 bandit6@bandit:~$ cat < /var/lib/dpkg/info/bandit7.password
@@ -163,7 +163,7 @@ HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
 
 ### Solution:
 
-```
+```console
 bandit7@bandit:~$ cat data.txt | grep "millionth"
 millionth	cvX2JJa4CFALtqS87jk27qwqGhBM9plV
 ```
@@ -178,7 +178,7 @@ millionth	cvX2JJa4CFALtqS87jk27qwqGhBM9plV
 
 ### Solution:
 
-```
+```console
 bandit8@bandit:~$ cat data.txt | sort |uniq -u
 UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
 ```
@@ -193,7 +193,7 @@ UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
 
 ### Solution:
 
-```
+```console
 bandit9@bandit:~$ strings data.txt | grep "=========="
 2========== the
 ========== password
@@ -211,7 +211,7 @@ bandit9@bandit:~$ strings data.txt | grep "=========="
 
 ### Solution:
 
-```
+```console
 bandit10@bandit:~# echo "VGhlIHBhc3N3b3JkIGlzIElGdWt3S0dzRlc4TU9xM0lSRnFyeEUxaHhUTkViVVBSCg==" | base64 -d
 The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
 ```
@@ -226,7 +226,7 @@ The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
 
 ### Solution:
 
-```
+```console
 bandit11@bandit:~$ echo "Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh" | tr 'A-Za-z' 'N-ZA-Mn-za-m'
 The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
 ```
@@ -241,7 +241,7 @@ The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
 
 ### Solution:
 
-```
+```console
 bandit12@bandit:/tmp/haxxan2$ xxd -r /home/bandit12/data.txt > data.txt
 bandit12@bandit:/tmp/haxxan2$ zcat data.txt |file -
 /dev/stdin: bzip2 compressed data, block size = 900k
@@ -278,7 +278,7 @@ The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
 
 ### Solution:
 
-```
+```console
 bandit13@melissa:~$ ls
 sshkey.private
 bandit13@melissa:~$ ssh -i sshkey.private bandit14@localhost
@@ -301,7 +301,7 @@ bandit14@melissa:~$ cat /etc/bandit_pass/bandit14
 
 ### Solution:
 
-```
+```console
 bandit14@bandit:~$ telnet localhost 30000
 Trying 127.0.0.1...
 Connected to localhost.
@@ -321,7 +321,7 @@ BfMYroe26WYalil77FoDi9qh59eK5xNr
 
 ### Solution:
 
-```
+```console
 bandit15@bandit:~$ openssl s_client -connect 127.0.0.1:30001
 CONNECTED(00000003)
 depth=0 CN = localhost
@@ -406,7 +406,7 @@ cluFn7wTiGryunymYOu4RcffSxQluehd
 
 ### Solution:
 
-```
+```console
 bandit16@bandit:~$ nmap -p 31000-32000 127.0.0.1
 
 Starting Nmap 7.40 ( https://nmap.org ) at 2019-01-20 01:49 CET
