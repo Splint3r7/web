@@ -130,6 +130,8 @@ You have to do modifications to the exploit code according to the difference bet
 + Found the shell on server with directory:
 + 10.10.10.121/support/uploads/tickets/md5string.php
 
+Finally got the user flag!
+
 ## Privilege Escalation:
 
 ```console
