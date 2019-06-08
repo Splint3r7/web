@@ -77,20 +77,24 @@ Additionally, I have used extension that helped me to query the right syntax of 
 
 Nikto scan:
 
-- Nikto v2.1.6/2.1.5
-+ Target Host: 10.10.10.121
-+ Target Port: 80
-+ GET Server leaks inodes via ETags, header found with file /, fields: 0x2c37 0x57ff4a041d89c
-+ GET The anti-clickjacking X-Frame-Options header is not present.
-+ GET The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
-+ GET The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
-+ OPTIONS Allowed HTTP Methods: GET, HEAD, POST, OPTIONS
-+ OSVDB-3268: GET /admin/: Directory indexing found.
-+ OSVDB-3092: GET /admin/: This might be interesting...
-+ GET Cookie PHPSESSID created without the httponly flag
-+ GET Cookie lang created without the httponly flag
-+ OSVDB-3092: GET /support/: This might be interesting...
-+ OSVDB-3233: GET /icons/README: Apache default file found.
+```console
+root@HassanKhan:~# nikto -h 10.10.10.121
+
+Nikto v2.1.6/2.1.5
+Target Host: 10.10.10.121
+Target Port: 80
+GET Server leaks inodes via ETags, header found with file /, fields: 0x2c37 0x57ff4a041d89c
+GET The anti-clickjacking X-Frame-Options header is not present.
+GET The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
+GET The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
+OPTIONS Allowed HTTP Methods: GET, HEAD, POST, OPTIONS
+OSVDB-3268: GET /admin/: Directory indexing found.
+OSVDB-3092: GET /admin/: This might be interesting...
+GET Cookie PHPSESSID created without the httponly flag
+GET Cookie lang created without the httponly flag
+OSVDB-3092: GET /support/: This might be interesting...
+OSVDB-3233: GET /icons/README: Apache default file found.
+```
 
 Nothing interesting expect the /admin/ directories. Running dirsearch on port 80 brought /support/
  directory in front of me which was helpdeskz.
@@ -110,13 +114,13 @@ Nothing interesting expect the /admin/ directories. Running dirsearch on port 80
 
  You have to do modifications to the exploit code according to the difference between your time and the server response time. anyways, this could be done manually as well. Manual steps will be:
 
-1- Uploaded php file splint3r7.php
-2- Extracted the data header from response
-3- converted the date header into seconds timestamp
++ Uploaded php file splint3r7.php
++ Extracted the data header from response
++ converted the date header into seconds timestamp
 @ https://www.epochconverter.com/
-4- converted md5(filename.phptimestamp)
-5- Found the shell on server with directory:
-@ 10.10.10.121/support/uploads/tickets/md5string.php
++ converted md5(filename.phptimestamp)
++ Found the shell on server with directory:
++ 10.10.10.121/support/uploads/tickets/md5string.php
 
 ## Privilege Escalation:
 
