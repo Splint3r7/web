@@ -103,16 +103,24 @@ Nothing interesting expect the /admin/ directories. Running dirsearch on port 80
 
 ## Exploitation:
 
+Searching for public exploits:
+
+```console
+root@HassanKhan:~# searchsploit helpdeskz
+HelpDeskZ 1.0.2 - Unauthenticated Arbitrary File Upload
+HelpDeskZ < 1.0.2 - Authenticated SQL Injection / Unauthorized File
+```
+
  So we found 2 exploits so far. great! As, helpdeskz is open-source, we can check that how does file upload work.
  @ https://github.com/evolutionscript/HelpDeskZ-1.0/blob/master/controllers/view_tickets_controller.php
 
  To made the exploit work, I had to do some modifications in the exploit that were:
- 1- adjusting the time that is
+ + adjusting the time that is
  currentTime = int(time.time() + 7200) and
- 2- changing the loop
+ + changing the loop
  for x in range(0, 500): // 500 all most 8 mins
 
- You have to do modifications to the exploit code according to the difference between your time and the server response time. anyways, this could be done manually as well. Manual steps will be:
+You have to do modifications to the exploit code according to the difference between your time and the server response time. anyways, this could be done manually as well. Manual steps will be:
 
 + Uploaded php file splint3r7.php
 + Extracted the data header from response
