@@ -4,7 +4,7 @@ date: 2019-04-02
 tags: [Hackthebox, ctf, writeup, Help]
 excerpt: "HackTheBox: Help Write Up!"
 header:
-  image: "assets/images/hackthebox-images/carrier-hackthebox-header.png"
+  image: "assets/images/hackthebox-images/help-banner.png"
 
 ---
 
