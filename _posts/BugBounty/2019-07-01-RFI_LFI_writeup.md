@@ -1,5 +1,5 @@
 ---
-title: "How I escalated to RFI into SSRF and LFI"
+title: "How I escalated to RFI into LFI"
 date: 2019-07-01
 tags: [BugBounty, BugBountyTips, Server Side Request Forgery, Local File Disclosure,]
 excerpt: "How I escalated to RFI into LFI"
@@ -56,6 +56,8 @@ https://redacted.redacted.com/redacted/redacted/redacted?file=/dev/random
 
 /dev/random is the Linux file that contains the environmental variables and the resources from the system. Also, that's not the regular file, the file contains many special characters while will eventually being fetched by the server. After using `?file=/dev/random`, the response of the request delayed to 67,000 millis. I did one more thing here, which I should not do, I created a wordlist of all of the Linux files and launched an intruder attack. And their server went down, I received 503 response after that xD.
 
+<img src="https://github.com/Splint3r7/web/raw/master/assets/images/BugBountyImages/server_down.png" alt="">
+
 ## EXPLOIT CASE /4 - Blind Local file Enumeration
 
 We can also enumerate the server for local files. If the file is available the response of the server will be:
@@ -68,6 +70,7 @@ Otherwise, the response from the server will be 404.html page. But, that's not m
 
 As from the exploit case (Limited RFI), we can see that we can include external urls. I tried using other schemas such as dict://, sftp://, tftp://, file://, ldap://, Gopher://, Tried few other tricks as well like gopher http, gopher http back connect but nothing seems to be working except https://. I could only do a PORT scan with it. If you want to check SSRF in details https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Request%20Forgery is for you. Let's jump into the LFI vulnerability section since SSRF was limited and boring, wasn't able to do much with it.
 
+<img src="https://github.com/Splint3r7/web/raw/master/assets/images/BugBountyImages/ssrf_request.png" alt="">
 
 ## EXPLOIT CASE /6 - Local File Read (Finally !!!).
 
@@ -79,11 +82,11 @@ So, the endpoint that I have does not have upload functionality, but It made me 
 
 Let's look at JS one's the endpoint:
 
+<img src="https://github.com/Splint3r7/web/raw/master/assets/images/BugBountyImages/js_endpoint_ok.png" alt="">
 
 Okay, it was getting bit messy, let me summarise everything that is happening there.if you look at the RFI explained above you can see that the file parameter takes CSV file and added the data from it to the site, Now, Consider, I have send file=/etc/passwd, request to the server. Now on the backend, it will create a file passwd and assign an id to it. And another endpoint that I found out from the JS file, will open up that file for me, simply :)
 
-Attach an image of LFI
-
+<img src="https://github.com/Splint3r7/web/raw/master/assets/images/BugBountyImages/LFI_csvread.png" alt="">
 
 That's not a complete /etc/passwd file but its Enough to get P1 severity.
 
