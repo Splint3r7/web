@@ -4,7 +4,7 @@ date: 2019-07-01
 tags: [BugBounty, BugBountyTips, Server Side Request Forgery, Local File Disclosure,]
 excerpt: "How I escalated to RFI into LFI"
 header:
-  image: ""
+  image: "assets/images/localfileread_banner.png"
 
 ---
 
