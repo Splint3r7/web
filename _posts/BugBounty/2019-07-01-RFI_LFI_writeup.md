@@ -60,7 +60,7 @@ https://redacted.redacted.com/redacted/redacted/redacted?file=/dev/random
 
 We can also enumerate the server for local files. If the file is available the response of the server will be:
 
-![alt]({{ site.url }}{{ site.baseurl }}assets/images/BugBountyImages/local_file_enumerate_response.png)
+<img src="{{ site.url }}{{ site.baseurl }}assets/images/BugBountyImages/local_file_enumerate_response.png" alt="">
 
 Otherwise, the response from the server will be 404.html page. But, that's not much being used as we cannot read any file from the server we can just enumerate them blindly.
 
