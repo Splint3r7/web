@@ -51,7 +51,7 @@ As such there was no CSRF token in the request, So we can add CSV data into the 
 
 Thanks to @CreedHackers, for giving me the idea to change this bug into DOS vulnerability. This endpoint also leads to Application Level DOS vulnerability. Since the endpoint is used to load the files from the server-side, So We can load any file from the server. So if I open dev/random, before reading it, it will take buffer to the memory which will be huge and we will get Dos vulnerability.
 
-```code
+```console
 https://redacted.redacted.com/redacted/redacted/redacted?file=/dev/random
 ```
 
