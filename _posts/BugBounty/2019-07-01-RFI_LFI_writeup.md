@@ -49,7 +49,7 @@ As such there was no CSRF token in the request, So we can add CSV data into the 
 
 ## EXPLOIT CASE /3 - DOS vulnerability
 
-Thanks to @CreedHackers, for giving me the idea to change this bug into DOS vulnerability. This endpoint also leads to Application Level DOS vulnerability. Since the endpoint is used to load the files from the server-side, So We can load any file from the server. So if I open dev/random, before reading it, it will take buffer to the memory which will be huge and we will get Dos vulnerability.
+Thanks to [@CreedHackers](https://twitter.com/@CreedHackers), for giving me the idea to change this bug into DOS vulnerability. This endpoint also leads to Application Level DOS vulnerability. Since the endpoint is used to load the files from the server-side, So We can load any file from the server. So if I open dev/random, before reading it, it will take buffer to the memory which will be huge and we will get Dos vulnerability.
 
 ```console
 https://redacted.redacted.com/redacted/redacted/redacted?file=/dev/random
@@ -69,7 +69,7 @@ Otherwise, the response from the server will be 404.html page. But, that's not m
 
 ## EXPLOIT CASE /5 - SSRF
 
-As from the exploit case (Limited RFI), we can see that we can include external urls. I tried using other schemas such as dict://, sftp://, tftp://, file://, ldap://, Gopher://, Tried few other tricks as well like gopher http, gopher http back connect but nothing seems to be working except https://. I could only do a PORT scan with it. If you want to check SSRF in details [link](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Request%20Forgery) is for you. Let's jump into the LFI vulnerability section since SSRF was limited and boring, wasn't able to do much with it.
+As from the exploit case (Limited RFI), we can see that we can include external urls. I tried using other schemas such as dict://, sftp://, tftp://, file://, ldap://, Gopher://, Tried few other tricks as well like gopher http, gopher http back connect but nothing seems to be working except https://. I could only do a PORT scan with it. If you want to check SSRF in details [Payload All the Things SSRF](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Request%20Forgery) is for you. Let's jump into the LFI vulnerability section since SSRF was limited and boring, wasn't able to do much with it.
 
 <img src="https://github.com/Splint3r7/web/raw/master/assets/images/BugBountyImages/ssrf_request.png" alt="">
 
@@ -93,4 +93,4 @@ That's not a complete /etc/passwd file but its Enough to get P1 severity.
 
 So, It's like developers are taking every file as CSV using csvread function, then they save that file, logs it and assigns it an ID, fetches it from another endpoint. Done! job done for me as well, thanks devs ;)
 
-That was an interesting LFI that I wanted to share with you guys, I hope you have learned something new from it. I would be sharing more bugs, ctfs, htb_writeups in future. So, Don't forget to follow me on twitter @Splint3r7.
+That was an interesting LFI that I wanted to share with you guys, I hope you have learned something new from it. I would be sharing more bugs, ctfs, htb_writeups in future. So, Don't forget to follow me on twitter [@Splint3r7](https://twitter.com/Splint3r7).
