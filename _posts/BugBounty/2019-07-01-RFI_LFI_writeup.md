@@ -8,12 +8,12 @@ header:
 
 ---
 
-Hello everyone, today I am going to share one of my recent interesting finding that is RFI to LFI vulnerability. It was a private program, So let's call it private.com
+Hello World, today I am going to share one of my recent interesting finding that is RFI to LFI vulnerability. It was a private program, So let's call it private.com
 
 During my research, I came across an interesting endpoint which was taking the CSV file URL from the bucket and was including the CSV data into the site. Let's look at the endpoint first.
 
-```code
-private.com/redacted/redacted/redacted?file=https://redacted-dev.s3.amazonaws.com
+```
+private.com/redacted/redacted/redacted?file=https://redacted-dev.s3.amazonaws.com/file.csv
 ```
 
 ## Summary:
