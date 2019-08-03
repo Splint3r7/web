@@ -12,7 +12,7 @@ Hello World, today I am going to share one of my recent interesting finding that
 
 During my research, I came across an interesting endpoint which was taking the CSV file URL from the bucket and was including the CSV data into the site. Let's look at the endpoint first.
 
-```
+```console
 private.com/redacted/redacted/redacted?file=https://redacted-dev.s3.amazonaws.com/file.csv
 ```
 
@@ -26,9 +26,10 @@ So, If I change the URL to my server, the application will read data from my ser
 
 As there is no restriction in the file parameter, an attacker can use any external site to the file endpoint. The file parameter will send a request to the attacker's server and products will be added to the account without any verification here.
 
-```code
+```console
 private.com/redacted/redacted/redacted?file=https://a48e7786.ngrok.io/file.csv
 ```
+
 this is called remote file inclusion since we are using external files that are hosted on external domains or any domain/site in the world.
 
 ## EXPLOIT CASE /2 - CSRF to Add products to Panel
