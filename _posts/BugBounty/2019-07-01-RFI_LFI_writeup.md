@@ -69,7 +69,7 @@ Otherwise, the response from the server will be 404.html page. But, that's not m
 
 ## EXPLOIT CASE /5 - SSRF
 
-As from the exploit case (Limited RFI), we can see that we can include external urls. I tried using other schemas such as dict://, sftp://, tftp://, file://, ldap://, Gopher://, Tried few other tricks as well like gopher http, gopher http back connect but nothing seems to be working except https://. I could only do a PORT scan with it. If you want to check SSRF in details https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Request%20Forgery is for you. Let's jump into the LFI vulnerability section since SSRF was limited and boring, wasn't able to do much with it.
+As from the exploit case (Limited RFI), we can see that we can include external urls. I tried using other schemas such as dict://, sftp://, tftp://, file://, ldap://, Gopher://, Tried few other tricks as well like gopher http, gopher http back connect but nothing seems to be working except https://. I could only do a PORT scan with it. If you want to check SSRF in details link:  https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Request%20Forgery is for you. Let's jump into the LFI vulnerability section since SSRF was limited and boring, wasn't able to do much with it.
 
 <img src="https://github.com/Splint3r7/web/raw/master/assets/images/BugBountyImages/ssrf_request.png" alt="">
 
