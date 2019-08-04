@@ -1,5 +1,5 @@
 ---
-title: "How I escalated to RFI into LFI"
+title: "How I escalated RFI into LFI"
 date: 2019-07-01
 tags: [BugBounty, BugBountyTips, Server Side Request Forgery, Local File Disclosure,]
 excerpt: "How I escalated to RFI into LFI"
