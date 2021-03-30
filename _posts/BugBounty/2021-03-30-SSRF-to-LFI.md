@@ -81,11 +81,11 @@ Hosted this PHP file on my ngrok server and then I sent the payload as:
 
 and i was presented with the PDF file
 
-![assets/images/BugBountyImages/ssrf/Screenshot_2021-03-25_at_1.06.06_AM.png](assets/images/BugBountyImages/ssrf/Screenshot_2021-03-25_at_1.06.06_AM.png)
+<img src="https://raw.githubusercontent.com/Splint3r7/web/master/assets/images/BugBountyImages/ssrf/Screenshot_2021-03-25_at_1.06.06_AM.png" alt="">
 
 Yayy!! I was able to read the local file of the server. as I know more about the organization and how they store their application internally I tried to fetch their database.yml file in path `/config/database.yml` but it did not succeed. Later, I figured it out that they had their database file in `/var/company_name/config/database.yml` and I was able to read their DB file as well.
 
-![assets/images/BugBountyImages/ssrf/Screenshot_2021-03-25_at_1.10.55_AM.png](assets/images/BugBountyImages/ssrf/Screenshot_2021-03-25_at_1.10.55_AM.png)
+<img src="https://raw.githubusercontent.com/Splint3r7/web/master/assets/images/BugBountyImages/ssrf/Screenshot_2021-03-25_at_1.10.55_AM.png" alt="">
 
 ### Payloads
 
