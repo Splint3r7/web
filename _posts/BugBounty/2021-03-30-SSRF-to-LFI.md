@@ -7,12 +7,13 @@ header:
   image: "assets/images/BugBountyImages/ssrf/ssrf_to_lfi.png"
 
 ---
+https://github.com/Splint3r7/web/raw/master/assets/images/BugBountyImages/ssrf/Screenshot_2021-03-24_at_8.22.58_PM.png
 
 This blog post is about the vulnerability that I have identified in `Wkhtmltopdf` gem, which was allowing users to inject HTML in the pdf files, and after doing further research, I was able to identify that the parser's functionality was vulnerable to internal SSRF attack, which further allowed me to read server's local file.
 
 Injecting the simple HTML payload the code section oft the application `"><h1>XSS</h1>`
 
-![assets/images/BugBountyImages/ssrf/Screenshot_2021-03-24_at_8.22.58_PM.png](assets/images/BugBountyImages/ssrf/Screenshot_2021-03-24_at_8.22.58_PM.png)
+![assets/images/BugBountyImages/ssrf/Screenshot_2021-03-24_at_8.22.58_PM.png](https://github.com/Splint3r7/web/raw/master/assets/images/BugBountyImages/ssrf/)
 
 Loading the PDF file show's the injected HTML has been successfully executed in our PDF file. 
 
