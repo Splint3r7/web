@@ -145,7 +145,7 @@ $ sudo apt-get install wkhtmltopdf
 <script src="https://gist.githubusercontent.com/Splint3r7/09d82684dfe701a4aa319c5beffb64cd/raw/b6c84cb16868fe4974183d657cc0d3f16c6251c6/ssrf_wkhtmltopdf.php"></script>
 
 
-<iframe src="https://gist.githubusercontent.com/Splint3r7/81661d9ef5e59c669bfcac650d53f707/raw/a94534a9b10771f6f84cb6afb4763523288fcf94/read.php"></iframe>
+<script src="https://gist.githubusercontent.com/Splint3r7/81661d9ef5e59c669bfcac650d53f707/raw/a94534a9b10771f6f84cb6afb4763523288fcf94/read.php"></script>
 
 Host these two files on your apache2 server and now you can go to the URL `[http://127.0.0.1/ss2.php?xss="><h1>XSS</h1>](http://127.0.0.1/ss2.php?xss="><h1>XSS</h1>)` once you hit this URL, a test.html file will be created with your supplied input and a PDF file will be generated.
 
