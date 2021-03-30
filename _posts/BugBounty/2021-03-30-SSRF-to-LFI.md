@@ -8,8 +8,6 @@ header:
 
 ---
 
-# SSRF to Local File Read
-
 This blog post is about the vulnerability that I have identified in `Wkhtmltopdf` gem, which was allowing users to inject HTML in the pdf files, and after doing further research, I was able to identify that the parser's functionality was vulnerable to internal SSRF attack, which further allowed me to read server's local file.
 
 Injecting the simple HTML payload the code section oft the application `"><h1>XSS</h1>`
