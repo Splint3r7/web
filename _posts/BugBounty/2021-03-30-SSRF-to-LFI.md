@@ -1,6 +1,6 @@
 ---
 title: "SSRF to Local File Read"
-date: 2021-03-30
+date: 2021-03-31
 tags: [BugBounty, BugBountyTips, Server Side Request Forgery, Local File Disclosure, SSRF, LFI, Ruby On Rails, Rails]
 excerpt: "SSRF to Local File Read"
 header:
