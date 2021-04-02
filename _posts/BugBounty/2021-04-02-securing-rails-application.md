@@ -287,7 +287,7 @@ Since this user input is directly being pass in the back-ticks, so an attacker w
 
 ### Command Injections using open3:
 
-```html
+```ruby
 require 'open3'
 require 'sinatra'
 
