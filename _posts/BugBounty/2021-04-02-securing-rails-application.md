@@ -394,7 +394,8 @@ This concept is called using strong parameters in rails.
 
 If you have identified LFI or any other file read vulnerability you can extract these sensitive files to escalate your bug. Sometimes these sensitive files are not in straight /config/ folders so you have to guess the directory.
 
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">If you are able to exploit rails CVE 5418 <br>try these things, you may end up getting the database file&#39;s credentials<br><br>config/database.yml<br>/opt/config/database.yml<br>/var/config/database.yml<br>/var/company_name/config/database.yml<br><br>The last one worked for!<a href="https://twitter.com/hashtag/BugBountyTip?src=hash&amp;ref_src=twsrc%5Etfw">#BugBountyTip</a> <a href="https://twitter.com/hashtag/BugBountyTips?src=hash&amp;ref_src=twsrc%5Etfw">#BugBountyTips</a> <a href="https://t.co/1OkYNwBJDa">pic.twitter.com/1OkYNwBJDa</a></p>&mdash; Splint3r7 (@Splint3r7_) <a href="https://twitter.com/Splint3r7_/status/1113703804552318977?ref_src=twsrc%5Etfw">April 4, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
 
 ## **Black Box Enumeration of Rails Application:**
 
@@ -406,7 +407,7 @@ You can use multiple wordlists to enumerate an application running on ruby on ra
 
 ***Tip***: While running dirsearch scan on rails application always brute force with extensions .json .html .xml, sometimes the application leaks sensitive information in other file formats. 
 
-[https://twitter.com/s0md3v/status/1177183347887312897](https://twitter.com/s0md3v/status/1177183347887312897)
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Checking if a website is using Ruby on Rails<br><br>&gt; Search for &quot;csrf-param&quot; meta tag<br>&gt; js files with path /assets/application-*.js<br>&gt; Check their Job postings<br>&gt; _session_id in Cookie value (not a solid indicator)<br>&gt; Check for Server/X-Powered-By header</p>&mdash; Somdev Sangwan (@s0md3v) <a href="https://twitter.com/s0md3v/status/1177183347887312897?ref_src=twsrc%5Etfw">September 26, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ### - Burp Suite Extension
 
