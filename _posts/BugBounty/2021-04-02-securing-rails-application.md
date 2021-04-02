@@ -33,7 +33,7 @@ end
 
 Also, this is to be noted that by default ruby on rails application does not protect an application from CSRF attacks in GET requests.
 
-Blog Post about How I was able to invite users as admin in the organization by Exploiting [XSS and CSRF](https://www.notion.so/Privilege-Escalation-using-XSS-d98e8f4a738146e5bf6aefe4c51c33f7).
+Blog Post about How I was able to invite users as admin in the organization by Exploiting [XSS and CSRF](http://hassankhanyusufzai.com/privilege-escalation-via-xss/).
 
 ## Cross Site Scripting
 
@@ -249,7 +249,7 @@ RESPONSE: {
 
 ### Fix SSRF vulnerabilities:
 
-Fix SSRF using SSRF gem.
+You can fix SSRF vulnerabilites using the gem [ssrf_filter](https://github.com/arkadiyt/ssrf_filter). 
 
 ```ruby
 require 'ssrf_filter'
@@ -260,7 +260,7 @@ get '/' do
 end
 ```
 
-[Add link to SSRF Write Up here.](https://www.notion.so/SSRF-to-Local-File-Read-3bbec45d951a447da2f71938b31b215b)
+Here is the recent SSRF write-up, I have identifed where wicked pdf was being used. [SSRF to local File Read](http://hassankhanyusufzai.com/SSRF-to-LFI/)
 
 ## Command Injections
 
@@ -319,7 +319,7 @@ path = "#{Rails.root}/public/downloads/#{user_supplied_path}"
 system("ls", path)
 ```
 
-it's not recommended to fix command injection vulnerabilities using a blacklist method since they are prone to bypass using different encoding types. but if you do have to create a black then make sure you block these special characters from your user input.
+it's not recommended to fix command injection vulnerabilities using a blacklist method since they are prone to bypass using different encoding types. but if you do, then make sure you block these special characters from your user input.
 
 ```html
 bad_chars = [ '/', '\\', '?', '%', '*', ':', '|', '"', '<', '>', '.', ' ', ";", "&&", "||", "`", "&", "$" ] 
@@ -327,7 +327,7 @@ bad_chars = [ '/', '\\', '?', '%', '*', ':', '|', '"', '<', '>', '.', ' ', ";", 
 
 You can tweak this array a bit based on your project requirements but make sure you blacklist `| ; & && % $ ` ||` characters from your input.
 
-[shellescape](https://apidock.com/ruby/Shellwords/shellescape) is another method that can be used in the rails library to fix command injection issues. that's also mentioned in [brakeman issue's](https://github.com/presidentbeef/brakeman/issues/1159) section.
+[shellescape](https://apidock.com/ruby/Shellwords/shellescape) is another method  in the rails library that can be used to fix command injection issues. That's also mentioned in [brakeman issue's](https://github.com/presidentbeef/brakeman/issues/1159) section.
 
 ## Mass Assignment:
 
