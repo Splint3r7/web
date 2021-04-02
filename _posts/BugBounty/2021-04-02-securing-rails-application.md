@@ -394,7 +394,7 @@ This concept is called using strong parameters in rails.
 
 If you have identified LFI or any other file read vulnerability you can extract these sensitive files to escalate your bug. Sometimes these sensitive files are not in straight /config/ folders so you have to guess the directory.
 
-[Rails-LFI-Tip](https://twitter.com/Splint3r7_/status/1113703804552318977)
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
 ## **Black Box Enumeration of Rails Application:**
 
