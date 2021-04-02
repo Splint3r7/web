@@ -379,6 +379,21 @@ This concept is called using strong parameters in rails.
 @user = current_user.find_by(id: params[:user_id])
 ```
 
+### Logging sensitive parameters :
+
+By Default Ruby on Rails Application everything, including user names, passwords, credit card numbers etc. To filter those special character's make sure you initialize `Rails.application.config.filter_parameters` in your `filter_parameter_logging.rb` file.
+
+Example:
+
+```ruby
+
+# Filter sensitive parameters
+Rails.application.config.filter_parameters += [
+  :password,
+  'user.password'
+]
+```
+
 ## Sensitive files:
 
 ```
@@ -404,6 +419,8 @@ If you have identified LFI or any other file read vulnerability you can extract 
 You can use multiple wordlists to enumerate an application running on ruby on rails. here's the list of wordlists:
 
 - [Seclists - ror.txt](https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/ror.txt)
+
+- [Rails dot files](https://secur.codes/werdlists/webapp-files/rails-dot-files.txt)
 
 ***Tip***: While running dirsearch scan on rails application always brute force with extensions .json .html .xml, sometimes the application leaks sensitive information in other file formats. 
 
