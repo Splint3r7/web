@@ -388,7 +388,7 @@ Mass assignment is a vulnerability in rails application that allows the attacker
 
 Consider a case where a user lets say manager user is able to add funds into his account.
 
-```jsx
+```ruby
 Class User < ActiveRecord::Base
 		attr_accessible :first_name :last_name :funds
 end 
@@ -396,13 +396,13 @@ end
 
 Now consider user send's a GET request to the server to change his first name and last name from the user model, request would look like this:
 
-```jsx
+```
 GET /users/edit?user[first_name]=hassan&user[last_name]=khan
 ```
 
 Now, from the attacker's perspective, an attacker can add fund parameters and can add funds in his account without the admin's approval. 
 
-```jsx
+```
 GET /users/edit?user[funds]=100 
 ```
 
@@ -412,7 +412,7 @@ Attacker will be able to add 100$ funds into his account.
 
 Use permit to permit to fix mass assignment security issues. 
 
-```jsx
+```ruby
 def allowed_parameters
 	params.require(:user).permit(:first_name, :last_name:)
 end
