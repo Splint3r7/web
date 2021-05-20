@@ -329,6 +329,59 @@ You can tweak this array a bit based on your project requirements but make sure 
 
 [shellescape](https://apidock.com/ruby/Shellwords/shellescape) is another method  in the rails library that can be used to fix command injection issues. That's also mentioned in [brakeman issue's](https://github.com/presidentbeef/brakeman/issues/1159) section.
 
+## Rails Constantize method
+
+In rails you can use Constantize method to a string, if you have model class in your application. But using constantize is not safe, as it could open doors to several attacks like command injection, local file enumeration, class model name enumeration and DDOS attacks.
+
+### Vulnerable Code:
+
+```ruby
+def vuln_function
+	some_var = @some_var2.constantize
+	@some_var2 = params[:method]
+end
+```
+
+The above code is vulnerable to model class name enumeration, since `http://10.0.0.0/vuln_function?method=fuzz` method parameters allows an attacker to run a brute force attack with different models and identify a valid models based on the response of the application.
+
+### Vulnerable code 2:
+
+Contantize method will be more dangerous if it is used to create a new object from the contantize parameter. A vulnerable code will look like this:
+
+```
+	def testing_controller
+		@test = params[:a].constantize.new(params[:b])
+	end
+```
+
+Now if you try to access your rails web application with `http://127.0.0.1:3000/example14?a=File&b=/etc/passwd` it will give you 200 OK response since /etc/passwd file exists on your machine.
+
+but if you hit the above URL with random file name you will get error.
+
+### Safe way to use constantize:
+
+To use constantize safest way, is to only allow models classes that are required. for example the fix of model name enumeration vulnerability in constantize could be patched as:
+
+```ruby
+MODELS = {
+  'product' => 'product',
+  'user' => 'user',
+  'users' => 'users'
+}
+class Example14Controller < ApplicationController
+	def testing_controller
+		MODELS.fetch(params[:a]
+	end
+end
+```
+
+So, as per the above patch, a user will only able to get the valid response from the server when the parameter `a` will be `product`, `user` or `users`. Valid request to the server will look like `http://127.0.0.1:3000/example14?a=product`. User input other then product,user,users will not print anything and application will through `
+key not found: "asdasdas"` error.
+
+**Reference**
+
+- http://gavinmiller.io/2016/the-safesty-way-to-constantize/ 
+
 ## Mass Assignment:
 
 Mass assignment is a vulnerability in rails application that allows the attacker to set model attributes by manipulating the parameter in the model attribute.
@@ -414,7 +467,7 @@ If you have identified LFI or any other file read vulnerability you can extract 
 
 ## **Black Box Enumeration of Rails Application:**
 
-### - Wordlists
+### Wordlists
 
 You can use multiple wordlists to enumerate an application running on ruby on rails. here's the list of wordlists:
 
@@ -424,9 +477,19 @@ You can use multiple wordlists to enumerate an application running on ruby on ra
 
 ***Tip***: While running dirsearch scan on rails application always brute force with extensions .json .html .xml, sometimes the application leaks sensitive information in other file formats. 
 
+### Exploits
+
+- CVE-2018-3760 [Exploit Template](https://github.com/jaeles-project/jaeles-signatures/blob/master/cves/rails-sprockets-info-leak-cve-2018-3760.yaml)
+
+- CVE-2020-8163 [Exploit Template](https://github.com/jaeles-project/jaeles-signatures/blob/master/cves/rails-rce-cve-2020-8163.yaml)
+
+- CVE-2019-5418 [Exploit Template](https://github.com/jaeles-project/jaeles-signatures/blob/master/cves/rails-info-leak-cve-2019-5418.yaml)
+
+### Technology mapping
+
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Checking if a website is using Ruby on Rails<br><br>&gt; Search for &quot;csrf-param&quot; meta tag<br>&gt; js files with path /assets/application-*.js<br>&gt; Check their Job postings<br>&gt; _session_id in Cookie value (not a solid indicator)<br>&gt; Check for Server/X-Powered-By header</p>&mdash; Somdev Sangwan (@s0md3v) <a href="https://twitter.com/s0md3v/status/1177183347887312897?ref_src=twsrc%5Etfw">September 26, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-### - Burp Suite Extension
+### Burp Suite Extension
 
 Burp Suite Extensions that can help you in black box testing of Ruby on Rails Applications are:
 
@@ -447,11 +510,11 @@ To identify potential security issues in your code use [brakeman](https://github
 
 ## Vulnerabilities and Security Advisories
 
-### 1- Bundle-audit
+### **1- Bundle-audit**
 
 [Bundler-audit](https://github.com/rubysec/bundler-audit) is a gem that reads your Gemfile and based on the existing versions identifies existing flaws in gems.
 
-### 2- ruby-advisory-db
+### **2- ruby-advisory-db**
 
 [ruby-advisory-db](https://github.com/rubysec/ruby-advisory-db) is a database of vulnerable Ruby Gems.
 
@@ -460,3 +523,7 @@ To identify potential security issues in your code use [brakeman](https://github
 GemScanner - Another tool that I have recently coded to identify older version of gems in your Gemfile.lock. The purpose of this tool is not to identify vulnerability in a gem but to find the current or latest version of gems.
 
 [![asciicast](https://asciinema.org/a/jJYO1WP2ctszJWGVdb6MYWIJJ.svg)](https://asciinema.org/a/jJYO1WP2ctszJWGVdb6MYWIJJ)
+
+## Contributions:
+
+* Special thanks to [stark0de1](https://twitter.com/stark0de1) to give me enough motivation to write this blog post & doing ruby on rails re-search with me. 
