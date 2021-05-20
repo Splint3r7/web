@@ -349,9 +349,9 @@ The above code is vulnerable to model class name enumeration, since `http://10.0
 Contantize method will be more dangerous if it is used to create a new object from the contantize parameter. A vulnerable code will look like this:
 
 ```
-	def testing_controller
-		@test = params[:a].constantize.new(params[:b])
-	end
+def testing_controller
+	@test = params[:a].constantize.new(params[:b])
+end
 ```
 
 Now if you try to access your rails web application with `http://127.0.0.1:3000/example14?a=File&b=/etc/passwd` it will give you 200 OK response since /etc/passwd file exists on your machine.
@@ -380,7 +380,7 @@ key not found: "asdasdas"` error.
 
 **Reference**
 
-- http://gavinmiller.io/2016/the-safesty-way-to-constantize/ 
+- [http://gavinmiller.io/2016/the-safesty-way-to-constantize/](http://gavinmiller.io/2016/the-safesty-way-to-constantize/ )
 
 ## Mass Assignment:
 
